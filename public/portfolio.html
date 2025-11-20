@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JIA-EN HO • Portfolio</title>
+  <meta name="description" content="Design & Sketching / Basic Design / Toy Description" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><span class="brand__dot"></span> JIA‑EN HO</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" data-nav>
+        <a href="index.html" >Home</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="highlight.html" >Highlight</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <section class="section accent">
+    <div class="container">
+      <h1>Portfolio</h1>
+
+      <h2>Design &amp; Sketching</h2>
+      <div class="cards" data-design-grid></div>
+
+      <h2 style="margin-top:var(--space-4)">Basic Design</h2>
+      <div class="cards" data-basic-grid></div>
+<div class="toy-text" data-toy>
+  <p>
+    <strong>Design Core:</strong> Create a pull-toy for my childhood self.<br><br>
+    <strong>Main Materials:</strong><br>
+    1) pine board (12mm × 120mm × 300mm)<br>
+    2) round wooden stick (6mm × 300mm)<br>
+    3) wooden wheels ×4 (40mm × 8mm)<br><br>
+    <strong>Design Considerations:</strong> Child appeal and safety.<br>
+    <strong>Target Users:</strong> Preschool children (ages 3–6).
+  </p>
+
+  <p>
+    <strong>Creative Motivation:</strong><br>
+    When I was little, I never liked to eat properly. I was often distracted by the things around me, becoming a little troublemaker for my kindergarten teachers and parents. Now, my four-year-old nephew has the same problem. That’s why I hope a cute little eating cat can accompany children during mealtime and draw their attention back to eating.
+  </p>
+
+  <p>
+    <strong>Toy Description:</strong><br>
+    The plate in the kitten’s hands and the three types of food (including an apple, a fish, a carrot) are equipped with magnets, allowing children to freely switch the food the kitten is “eating.” The yarn-shaped wheels further highlight the kitten theme. An additional wooden tail piece makes the kitten more three-dimensional. A small wooden box on the side can be used to store the food. All wooden parts are sanded with rounded edges, and the food items are made with bright, vibrant colors.
+  </p>
+</div>
+<div class="pager" style="margin-top:10px">
+  <button class="pager__btn" data-toy-prev aria-label="上一段">◀</button>
+  <span><span data-toy-index>1</span> / <span data-toy-total>3</span></span>
+  <button class="pager__btn" data-toy-next aria-label="下一段">▶</button>
+ </div>
+  </section>
+  </main>
+  <footer class="site-footer"><div class="container"><small>© <span id="year"></span> JIA‑EN HO. All rights reserved。</small></div></footer>
+  <script src="app.js"></script>
+</body></html>
