@@ -1,0 +1,900 @@
+:root{
+  --bg:#f8f9f2; --fg:#3f5974; --muted:#545454; --brand:#baafb7; --brand-2:#3f5974;
+  --container:1120px; --radius:16px;
+  --h1:clamp(28px,5vw,56px); --h2:clamp(22px,3.5vw,36px); --h3:clamp(18px,2.4vw,24px); --lead:1.12rem;
+  --space-1:8px; --space-2:14px; --space-3:22px; --space-4:36px; --space-5:20px;
+}
+*{box-sizing:border-box} html,body{height:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(100% - 32px, var(--container));margin-inline:auto}
+.narrow{width:min(100% - 32px, 840px);margin-inline:auto}
+.section{padding:var(--space-3) 0}
+.site-header{position:sticky;top:0;z-index:100;background:#baafb7; border-bottom:1px solid rgba(63,89,116,.15)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;min-height:66px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+.brand__dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block}
+.nav-toggle{display:none;background:none;border:none;font-size:24px}
+.site-nav{display:flex;gap:22px}
+.site-nav a{padding:10px 0;position:relative}
+.site-nav a[aria-current="page"]{color:var(--brand);font-weight:800}
+.site-nav a:after{content:'';position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.site-nav a:hover:after{transform:scaleX(1)}
+@media (max-width:860px){.nav-toggle{display:inline-block}.site-nav{display:none;position:absolute;top:66px;right:16px;background:var(--bg);border:1px solid #eee;border-radius:12px;padding:10px 14px;flex-direction:column}.site-nav[data-open=true]{display:flex}}
+h1{font-size:var(--h1);line-height:1.1;margin:0 0 var(--space-3)}
+h2{font-size:var(--h2);line-height:1.2;margin:0 0 var(--space-3)}
+h3{font-size:var(--h3);margin:var(--space-2) 0 var(--space-1)}
+.lead{font-size:var(--lead);color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:1000px;border:1px solid transparent;font-weight:700;cursor:pointer}
+.btn--primary{background:var(--brand);color:#fff}
+.btn--primary:hover{filter:brightness(1.06)}
+.btn--ghost{background:transparent;border-color:var(--brand);color:var(--brand)}
+.hero{padding-top:calc(var(--space-5) + 24px)}
+.hero__grid{display:grid;gap:var(--space-4);grid-template-columns:1.05fr .95fr;align-items:center}
+.hero__img{border-radius:var(--radius);box-shadow:0 10px 30px rgba(63,89,116,.15)}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.card{border:1px solid rgba(63,89,116,.15);border-radius:var(--radius);padding:var(--space-2);background:#fff;box-shadow:0 6px 16px rgba(63,89,116,.08)}
+@media (max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.slider{position:relative}
+.slider__viewport{position:relative;overflow:hidden;border-radius:var(--radius)}
+.slider__track{display:flex;transition:transform .4s ease}
+.slider__slide{flex:0 0 100%;user-select:none}
+.slider__arrow{position:absolute;top:50%;transform:translateY(-50%);border:none;width:40px;height:40px;border-radius:50%;background:rgba(186,175,183,.94);color:#fff;box-shadow:0 6px 12px rgba(63,89,116,.18);cursor:pointer;display:grid;place-items:center}
+.slider__arrow[disabled]{opacity:.4;cursor:not-allowed}
+.slider__arrow--prev{left:10px}.slider__arrow--next{right:10px}
+.pager{display:flex;align-items:center;gap:10px}
+.pager__btn{border:none;background:transparent;font-size:22px;cursor:pointer;padding:6px 10px;border-radius:8px}
+.pager__btn:disabled{opacity:.4;cursor:not-allowed}
+.toy-text{min-height:7lh}
+.site-footer{padding:var(--space-4) 0;border-top:1px solid rgba(63,89,116,.15);text-align:center;color:var(--muted)}
+.accent{background:linear-gradient(180deg,rgba(186,175,183,.08),transparent 70%)}
+/* ==== Contact Section (match the screenshot) ==== */
+:root{
+  --contact-bg: #bfb4bd;           /* 淺灰紫底色 */
+  --contact-label: #ffffff;         /* 標籤文字白色 */
+  --contact-input-bg: #ffffff;      /* 輸入框白底 */
+  --contact-input-text: #333;       /* 輸入框文字 */
+  --contact-btn-bg: #3c4043;        /* 按鈕深灰 */
+  --contact-btn-text: #ffffff;      /* 按鈕白字 */
+  --contact-focus: 0 0 0 3px rgba(60,64,67,.25);
+}
+
+#contact { padding-top: 0; }
+
+/* 外層卡片 */
+.contact-pane{
+  background: var(--contact-bg);
+  border-radius: 40px;
+  padding: 36px 32px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 標題置中（沿用你原本的 .caption .center 亦可） */
+#contact .caption.center{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #bfb4bd
+}
+
+/* 表單為單欄縱向排列 */
+.contact-grid{
+  display: grid;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 標籤 & 內距 */
+.contact-grid label{
+  display: grid;
+  gap: 10px;
+  font-size: 22px;                 /* 左側標籤字大 */
+  color: var(--contact-label);
+}
+
+/* 輸入框樣式（白底、大圓角、高度厚實） */
+.contact-grid input,
+.contact-grid textarea{
+  background: var(--contact-input-bg);
+  color: var(--contact-input-text);
+  border: none;
+  border-radius: 14px;
+  padding: 18px 20px;
+  font-size: 20px;
+  line-height: 1.4;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.05) inset;
+}
+
+.contact-grid textarea{
+  min-height: 220px;               /* 近似截圖高度 */
+  resize: vertical;
+}
+
+/* 焦點環 */
+.contact-grid input:focus,
+.contact-grid textarea:focus{
+  box-shadow: var(--contact-focus);
+}
+
+/* 送出按鈕：置中、膠囊、放大字體 */
+.contact-actions{
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.contact-actions .btn{
+  background: var(--contact-btn-bg);
+  color: var(--contact-btn-text);
+  border: none;
+  border-radius: 999px;             /* 膠囊 */
+  font-size: 28px;                  /* 截圖般的大字 */
+  padding: 14px 32px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+
+.contact-actions .btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+
+.contact-actions .btn:active{
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 下方 email 文字（你已經有 .center + inline style，可補強一下） */
+#contact .center{
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 24px;                  /* 與截圖一致的大字 */
+}
+
+/* 手機調整：避免過大 */
+@media (max-width: 640px){
+  .contact-pane{ border-radius: 28px; padding: 28px 20px 44px; }
+  .contact-grid label{ font-size: 18px; }
+  .contact-grid input,
+  .contact-grid textarea{ font-size: 18px; padding: 14px 16px; }
+  .contact-actions .btn{ font-size: 22px; padding: 12px 24px; }
+  #contact .center{ font-size: 18px; }
+}
+/* Toy Description 輪播 */
+.toy-text p { display: none; }          /* 預設全部隱藏 */
+.toy-text p.is-active { display: block; } /* 只有當前段落顯示 */
+
+  /* Toy Description 文字置中 */
+.toy-text {
+  text-align: center;
+}
+
+.toy-text p {
+  margin: 0 auto;
+  max-width: 700px;   /* 讓段落不會太寬，排版更美觀 */
+  line-height: 1.8;
+}
+
+/* 只縮小 Highlight 頁面的四個區塊間距 */
+.page-highlight .section {
+  padding: 20px 0; /* 原本 64px → 縮小一半 */
+}
+
+.site-header a { color:#fff; } /* 讓文字改成白色比較清楚 */
+
+.page-highlight .slider__viewport {
+  overflow: hidden;       /* 保持左右切換時遮擋 */
+  border-radius: var(--radius);
+}
+.page-highlight .slider__slide img {
+  width: 100%;
+  height: 100%;
+  max-height: 800px;      /* ⬅ 想更矮就改小一點，例如 360px */
+  object-fit: cover;    /* 不裁切，若比例不合會留白 */
+  display: block;
+}
+
+hero-left {
+  margin-top: 3rem; /* 調整這個數字就能控制「下移多少」 */
+}
+
+.news-ticker {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f8f9f2;
+  border-top: 1px solid rgba(63, 89, 116, 0.15);
+  border-bottom: 1px solid rgba(63, 89, 116, 0.15);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 0.9rem;
+  color: #3f5974;
+}
+
+.news-ticker-label {
+  padding: 6px 12px;
+  font-weight: 700;
+  background: #3f5974;
+  color: #f8f9f2;
+  white-space: nowrap;
+}
+
+.news-ticker-window {
+  overflow: hidden;
+  flex: 1;
+}
+
+.news-ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: news-ticker-scroll 30s linear infinite;
+}
+
+.news-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-ticker-item:hover {
+  text-decoration: underline;
+}
+
+.news-ticker-tag {
+  margin-right: 0.25rem;
+  font-weight: 600;
+}
+
+.news-ticker-loading,
+.news-ticker-error {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: #3f5974;
+  background: #f8f9f2;
+}
+
+/* 跑馬燈動畫 */
+@keyframes news-ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 因為我們複製了兩份列表，移動 50% 寬度就剛好無縫接上 */
+    transform: translateX(-50%);
+  }
+}
+/* ================================
+   ⭐ NASA APOD 懸浮卡：外層容器
+   ================================ */
+.apod-floating-card {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* ================================
+   ⭐ 星星按鈕（透明背景，只保留點擊範圍）
+   ================================ */
+.apod-toggle-btn {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: transparent;  /* 完全透明 */
+  padding: 0;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 只有微微放大效果，主角是星星 */
+  transition: transform 0.2s ease;
+}
+
+.apod-toggle-btn:hover {
+  transform: scale(1.06);
+}
+
+.apod-toggle-btn:active {
+  transform: scale(0.98);
+}
+
+.apod-toggle-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 4px;
+}
+
+/* ================================
+   ⭐ 主星星：大、發光、華麗動畫
+   ================================ */
+.apod-star {
+  font-size: 50px;              /* ⭐ 放大版星星 */
+  color: #ffd95e;               /* 金黃色 */
+  display: inline-block;
+
+  /* 多層光暈 */
+  text-shadow:
+    0 0 10px rgba(255, 217, 94, 0.9),
+    0 0 20px rgba(255, 217, 94, 0.8),
+    0 0 35px rgba(255, 217, 94, 0.7),
+    0 0 55px rgba(255, 217, 94, 0.5);
+
+  /* 華麗的跳動 + 微旋轉 + 呼吸光暈 */
+  animation:
+    apodStarMagic 1.6s ease-in-out infinite alternate,
+    apodStarTwinkle 3.5s ease-in-out infinite;
+}
+
+/* ⭐ 華麗主動畫：跳動 + 微微旋轉 + 放大縮小 */
+@keyframes apodStarMagic {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translateY(-10px) scale(1.2) rotate(-6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-16px) scale(1.3) rotate(4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-8px) scale(1.18) rotate(-3deg);
+    opacity: 0.95;
+  }
+}
+
+/* ⭐ 次動畫：光暈忽明忽暗（閃爍感） */
+@keyframes apodStarTwinkle {
+  0% {
+    text-shadow:
+      0 0 10px rgba(255, 217, 94, 0.8),
+      0 0 22px rgba(255, 217, 94, 0.7),
+      0 0 36px rgba(255, 217, 94, 0.5);
+  }
+  50% {
+    text-shadow:
+      0 0 16px rgba(255, 217, 94, 1),
+      0 0 32px rgba(255, 217, 94, 0.9),
+      0 0 50px rgba(255, 217, 94, 0.75);
+  }
+  100% {
+    text-shadow:
+      0 0 8px rgba(255, 217, 94, 0.6),
+      0 0 20px rgba(255, 217, 94, 0.5),
+      0 0 34px rgba(255, 217, 94, 0.4);
+  }
+}
+
+/* ================================
+   ✦ 環繞的小星星：用 pseudo-elements 做軌道效果
+   ================================ */
+.apod-toggle-btn::before,
+.apod-toggle-btn::after {
+  content: "✦";
+  position: absolute;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.9),
+    0 0 12px rgba(255, 255, 255, 0.7);
+  opacity: 0.8;
+}
+
+/* 左上方的小星星，繞半圈 */
+.apod-toggle-btn::before {
+  top: 4px;
+  left: 6px;
+  animation: apodOrbit1 4s linear infinite;
+}
+
+/* 右下方的小星星，反向繞圈 */
+.apod-toggle-btn::after {
+  bottom: 4px;
+  right: 2px;
+  font-size: 13px;
+  content: "✧";
+  animation: apodOrbit2 5s linear infinite;
+}
+
+/* 小星星軌道 1：逆時針慢速小圓 */
+@keyframes apodOrbit1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translate(-4px, 6px) scale(1.05);
+  }
+  50% {
+    transform: translate(2px, 14px) scale(0.95);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(8px, 4px) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+}
+
+/* 小星星軌道 2：順時針橢圓軌道 */
+@keyframes apodOrbit2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(6px, -6px) scale(1.1);
+  }
+  50% {
+    transform: translate(-2px, -14px) scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-10px, -4px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* ================================
+   📦 展開後的卡片本體
+   ================================ */
+.apod-content {
+  width: 320px;
+  max-height: 60vh;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px 14px 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+
+  /* 微微向上浮出的動態感（從底部滑出） */
+  animation: apodCardFadeIn 0.25s ease-out;
+}
+
+/* 卡片出現動畫 */
+@keyframes apodCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================
+   📝 卡片內文排版
+   ================================ */
+.apod-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.apod-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.apod-date {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* 圖片區 */
+.apod-image-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apod-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 說明文字 */
+.apod-explanation {
+  font-size: 12px;
+  color: #374151;
+  line-height: 1.4;
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+/* 底部連結 */
+.apod-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+.apod-footer a {
+  color: #3f5974;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.apod-footer a:hover {
+  text-decoration: underline;
+}
+
+/* 簡單文字樣式 */
+.apod-text {
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.apod-error {
+  font-size: 12px;
+  color: #b91c1c;
+}
+.fade-in {
+  animation: fadeIn 0.7s ease forwards;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(12px);}
+  to   {opacity: 1; transform: translateY(0);}
+}
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:root {
+  --bg: #f8f9f2;
+  --fg: #3f5974;
+  --muted: #545454;
+  --brand: #baafb7;
+  --brand-2: #3f5974;
+}
+
+/* --- 卡片整體容器（懸浮） --- */
+.floating-poke-card {
+  position: fixed;
+  bottom: 130px;
+  right: 24px;
+  z-index: 60;
+}
+
+/* --- Pokéball 按鈕（主懸浮按鈕） --- */
+.poke-toggle-btn {
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);  /* 透明球 */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow: none !important;           /* ❗ 沒有陰影 */
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+
+
+.poke-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* --- 展開後的卡片本體 --- */
+.poke-card {
+  margin-top: 10px;
+  max-width: 420px;
+
+  background: var(--bg);
+  color: var(--fg);
+
+  border-radius: 18px;
+  padding: 16px;
+
+  border: 1px solid rgba(63, 89, 116, 0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-poke-card.poke-expanded .poke-card {
+  opacity: 1;
+  transform: translateY(-6px);
+}
+
+/* --- Header 區塊：標題 + 隨機按鈕 --- */
+.poke-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.poke-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.poke-random-btn,
+.poke-search-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+
+  background: var(--brand);
+  color: white;
+  font-weight: 500;
+}
+
+.poke-random-btn:hover,
+.poke-search-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* --- 搜尋框 --- */
+.poke-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.poke-input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid var(--brand-2);
+  padding: 6px 10px;
+
+  background: white;
+  color: var(--fg);
+}
+
+.poke-input::placeholder {
+  color: var(--muted);
+}
+
+/* --- loading / error --- */
+.poke-text {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.poke-error {
+  font-size: 14px;
+  color: #b42318;
+  background: #fdecec;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+/* --- 內容區（圖片 + 基本資料） --- */
+.poke-content {
+  display: flex;            /* ⬅ 改成橫向排列 */
+  flex-direction: row;
+  gap: 16px;
+}
+
+.poke-main {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* --- 寶可夢圓形背景 --- */
+.poke-image-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+
+  background: radial-gradient(
+    circle at 30% 20%,
+    var(--brand),
+    var(--brand-2) 60%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke-image {
+  width: 90%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* --- 名稱 + 種類 --- */
+.poke-basic {
+  flex: 1;
+}
+
+.poke-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--fg);
+}
+
+.poke-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+/* --- type 標籤（改成你的配色風格：柔和色塊） --- */
+.poke-type {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.type-electric {
+  background: #ffe57f;
+  color: #5b4a00;
+}
+.type-water {
+  background: #b2d8ff;
+  color: #1f2f55;
+}
+.type-fire {
+  background: #ffb899;
+  color: #4b1d00;
+}
+.type-grass {
+  background: #c5f0c1;
+  color: #1f3b1f;
+}
+.type-psychic {
+  background: #f3c6ff;
+  color: #491e53;
+}
+.type-normal {
+  background: #e4e4e4;
+  color: #404040;
+}
+
+/* --- 身高體重 --- */
+.poke-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* --- 能力值區塊 --- */
+.poke-stats {
+  margin-top: 12px;
+  border-top: 1px dashed var(--brand-2);
+  padding-top: 8px;
+}
+
+.poke-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.poke-stat-name {
+  width: 80px;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0.85;
+}
+
+.poke-stat-bar-wrap {
+  flex: 1;
+  background: #e4e8eb;
+  border-radius: 999px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.poke-stat-bar {
+  height: 5px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+.poke-stat-value {
+  width: 30px;
+  text-align: right;
+  color: var(--fg);
+}
+.poke-head-icon {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+.poke-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* 右側：隨機按鈕 + 叉叉 */
+.poke-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 關閉按鈕 */
+.poke-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke-close-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
+}

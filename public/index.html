@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JIA-EN HO • Home</title>
+  <meta name="description" content="Home / About me / Contact" />
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+  <script>
+function scrollToAItest() {
+  const target = document.getElementById('react-root');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    alert('AItest 區塊尚未載入！');
+  }
+}
+</script>
+
+<body>
+ 
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><span class="brand__dot"></span> JIA‑EN HO</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+<div id="quote-root"></div>
+      <nav class="site-nav" data-nav>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="portfolio.html" >Portfolio</a>
+        <a href="highlight.html" >Highlight</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+ <section class="section hero accent">
+  <div class="container hero__grid">
+    <div class="hero-left">
+      
+      <h1>JIA-EN HO</h1>
+      <p class="lead">TAHRD/CSIE</p>
+      <div class="buttons" style="display:flex;gap:12px;margin-top:var(--space-3)">
+        <a class="btn btn--primary" href="portfolio.html">See Portfolio</a>
+        <a class="btn btn--ghost" href="#contact">Contact</a>
+        <button class="btn btn--primary" onclick="scrollToAItest()">美食報報</button>
+      </div>
+
+      <div class="social-links" style="margin-top:16px; margin-bottom:32px; display:flex; gap:16px;">
+        <a href="https://www.instagram.com/jnhs1c_/?next=%2F" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/41371103hjnh" target="_blank" rel="noopener">GitHub</a>
+        <a href="http://www.linkedin.com/in/jia-en-ho-ntnu117" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+       <div id="weather-root"></div>
+    </div>
+
+    <div>
+      <img class="hero__img" data-hero-img src="assets/home/sea.jpg" alt="Hero">
+    </div>
+  </div>
+</section>
+
+
+<section class="section fade-in">
+  <div class="container">
+    <h2 style="text-align:center;">About me</h2>
+
+    <p style="text-align:center; max-width:700px; margin: 0 auto 24px auto; line-height:1.6;">
+      JIA-EN HO is a student from National Taiwan Normal University, majoring in Technology
+      Application and Human Resource Development and also double majoring in Computer Science.<br><br>
+      My hobbies are dancing, and I like cats and the ocean.<br><br>
+      I’m a kind, ambitious, responsible girl, and I hope to have a successful career in the future.<br><br>
+      On a journey, still seeking the future.
+    </p>
+
+    <div class="slider" data-slider style="display:flex; justify-content:center; margin-top:20px;">
+      <div class="slider__viewport" style="max-width:700px;">
+        <div class="slider__track" data-about-track></div>
+        <button class="slider__arrow slider__arrow--prev" aria-label="上一張" data-prev>◀</button>
+        <button class="slider__arrow slider__arrow--next" aria-label="下一張" data-next>▶</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <div id="ai-root" style="margin-top:20px;"></div>
+
+<section id="contact" class="section">
+      <div class="container">
+        <h2 class="caption blue center">Contact </h2>
+        <div class="contact-pane">
+          <form class="contact-grid" id="contactForm">
+            <label><span>Name:</span><input id="name" type="text" required></label>
+            <label><span>Email:</span><input id="email" type="email" required></label>
+            <label><span>Message:</span><textarea id="message" rows="5" required></textarea></label>
+            <div class="contact-actions">
+              <button class="btn" type="submit">Send message</button>
+            </div>
+          </form>
+          <div class="center" style="margin-top:8px;color:#fff;font-size:24px;">
+            email: jiaen.ho.06@gmail.com
+          </div>
+          
+        </div>
+      </div>
+    </section>
+       <div id="news-root"></div>
+  </main>
+<div id="apod-root"></div>
+<div id="pokemon-root"></div>
+  <footer class="site-footer"><div class="container"><small>© <span id="year"></span> JIA‑EN HO. All rights reserved.</small></div></footer>
+  <script src="app.js"></script>
+</body></html>
